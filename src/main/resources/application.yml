@@ -7,3 +7,6 @@ spring:
     driver-class-name: org.h2.Driver
     url: 'jdbc:h2:mem:testdb'
     username: dbUser
+
+jwt:
+  secret: 1bd9158eeebe506072a858740497e7fea70e5a449868aa096ae77fb02f0ffbbfc4966ffc0ffc2b648b8102c14cc3ea7bac6c090c9bbd41c5445bec3e5a628b38

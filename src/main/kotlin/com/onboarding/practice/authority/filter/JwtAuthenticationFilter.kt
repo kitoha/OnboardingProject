@@ -1,6 +1,7 @@
 package com.onboarding.practice.authority.filter
 
 import com.onboarding.practice.authority.provider.JwtTokenProvider
+import io.jsonwebtoken.MalformedJwtException
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletRequest
 import jakarta.servlet.ServletResponse
@@ -18,6 +19,8 @@ class JwtAuthenticationFilter(
         if(token != null){
             val authentication = jwtTokenProvider.getAuthentication(token)
             SecurityContextHolder.getContext().authentication = authentication
+        }else{
+            request.setAttribute("exception",MalformedJwtException("token is empty"))
         }
 
         chain?.doFilter(request, response)
