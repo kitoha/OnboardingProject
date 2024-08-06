@@ -1,5 +1,6 @@
 package com.onboarding.practice.member.service
 
+import com.onboarding.practice.member.dto.LoginRequest
 import com.onboarding.practice.member.dto.MemberDto
 import com.onboarding.practice.member.entity.Member
 import com.onboarding.practice.member.repository.MemberRepository
@@ -31,6 +32,10 @@ class MemberService(
         memberRepository.save(member)
 
         return "회원 가입 완료하였습니다."
+    }
+
+    fun login(loginRequest: LoginRequest):String{
+        return ""
     }
 
 }
