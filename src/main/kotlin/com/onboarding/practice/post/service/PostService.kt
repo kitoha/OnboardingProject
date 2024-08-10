@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
 
 @Service
 class PostService (
@@ -63,5 +65,20 @@ class PostService (
         postRepository.save(post)
 
         return "삭제 완료"
+    }
+
+    fun getRemainingEditDays(id: Long) : Long{
+        val post = postRepository.findByIdOrNull(id) ?: throw IllegalStateException("Post not Found")
+
+        val deadlineDate = post.createdAt?.plusDays(10L)
+
+        val currentDate = LocalDateTime.now()
+
+        return if(currentDate.isBefore(deadlineDate) || currentDate.equals(deadlineDate)){
+            return ChronoUnit.DAYS.between(currentDate, deadlineDate)
+        }else{
+            return 0L
+        }
+
     }
 }

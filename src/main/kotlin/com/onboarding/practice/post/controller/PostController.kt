@@ -43,4 +43,9 @@ class PostController (
     fun deletedPost(@PathVariable id:Long): String{
         return postService.deletePost(id)
     }
+
+    @GetMapping("/api/post/remainDay/{id}")
+    fun getRemainingEditDays(@PathVariable id:Long): Long{
+        return postService.getRemainingEditDays(id)
+    }
 }
