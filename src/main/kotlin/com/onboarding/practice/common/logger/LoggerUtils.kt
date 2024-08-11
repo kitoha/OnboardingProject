@@ -1,4 +1,4 @@
-package com.onboarding.practice.common.Logger
+package com.onboarding.practice.common.logger
 
 import org.slf4j.LoggerFactory
 

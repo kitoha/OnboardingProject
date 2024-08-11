@@ -1,10 +1,9 @@
 package com.onboarding.practice.post.service
 
-import com.onboarding.practice.common.Logger.logger
+import com.onboarding.practice.common.logger.logger
 import com.onboarding.practice.post.dto.CommentDto
 import com.onboarding.practice.post.entity.Comment
 import com.onboarding.practice.post.repository.PostRepository
-import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 

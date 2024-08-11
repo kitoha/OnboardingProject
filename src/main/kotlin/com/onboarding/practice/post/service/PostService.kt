@@ -1,6 +1,6 @@
 package com.onboarding.practice.post.service
 
-import com.onboarding.practice.common.Logger.logger
+import com.onboarding.practice.common.logger.logger
 import com.onboarding.practice.post.convert.PostConverter
 import com.onboarding.practice.post.dto.PostDto
 import com.onboarding.practice.post.dto.PostResponse
