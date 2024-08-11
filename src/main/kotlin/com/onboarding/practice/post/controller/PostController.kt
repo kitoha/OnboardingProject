@@ -5,6 +5,7 @@ import com.onboarding.practice.common.enums.ResultCode
 import com.onboarding.practice.post.dto.PostDto
 import com.onboarding.practice.post.dto.PostResponse
 import com.onboarding.practice.post.service.PostService
+import jakarta.validation.Valid
 import org.springframework.data.domain.Pageable
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.userdetails.User
@@ -21,7 +22,7 @@ class PostController (
 ){
 
     @PostMapping("/api/post")
-    fun createPost(@RequestBody postDto: PostDto, @AuthenticationPrincipal user:User):BaseResponse<Boolean>{
+    fun createPost(@Valid @RequestBody postDto: PostDto, @AuthenticationPrincipal user:User):BaseResponse<Boolean>{
 
         val response: Boolean = postService.createPost(postDto,user.username)
 
