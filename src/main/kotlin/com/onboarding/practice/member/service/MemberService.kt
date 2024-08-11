@@ -1,6 +1,7 @@
 package com.onboarding.practice.member.service
 
 import com.onboarding.practice.authority.provider.JwtTokenProvider
+import com.onboarding.practice.common.exception.DuplicateException
 import com.onboarding.practice.member.dto.LoginRequest
 import com.onboarding.practice.member.dto.MemberDto
 import com.onboarding.practice.member.entity.Member
@@ -26,7 +27,7 @@ class MemberService(
         var member: Member? = memberRepository.findByEmail(memberDto.email)
 
         if(member!=null) {
-            return "이미 가입한 회원입니다."
+            throw DuplicateException("이미 가입한 회원입니다.")
         }
 
         val encryptedPassword : String = passwordEncoder.encode(memberDto.password)
