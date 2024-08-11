@@ -24,6 +24,9 @@ class MemberService(
      * 회원 가입 함수
      */
     fun signUp(memberDto: MemberDto):String{
+
+        memberDto.validate()
+
         var member: Member? = memberRepository.findByEmail(memberDto.email)
 
         if(member!=null) {

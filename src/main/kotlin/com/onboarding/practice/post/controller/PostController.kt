@@ -21,19 +21,19 @@ class PostController (
 ){
 
     @PostMapping("/api/post")
-    fun createPost(@RequestBody postDto: PostDto, @AuthenticationPrincipal user:User):BaseResponse<String>{
+    fun createPost(@RequestBody postDto: PostDto, @AuthenticationPrincipal user:User):BaseResponse<Boolean>{
 
-        val response: String = postService.createPost(postDto,user.username)
+        val response: Boolean = postService.createPost(postDto,user.username)
 
-        return BaseResponse(ResultCode.SUCCESS,null,response)
+        return BaseResponse(ResultCode.SUCCESS,response,"게시글 생성이 완료되었습니다.")
     }
 
     @PostMapping("/api/post/{id}")
-    fun updatePost(@PathVariable id:Long, @RequestBody postDto: PostDto, @AuthenticationPrincipal user:User):BaseResponse<String>{
+    fun updatePost(@PathVariable id:Long, @RequestBody postDto: PostDto, @AuthenticationPrincipal user:User):BaseResponse<Boolean>{
 
-        val response : String = postService.updatePost(id,postDto,user.username)
+        val response : Boolean = postService.updatePost(id,postDto,user.username)
 
-        return BaseResponse(ResultCode.SUCCESS,null, response)
+        return BaseResponse(ResultCode.SUCCESS,response, "게시글 수정이 완료되었습니다.")
     }
 
     @GetMapping("/api/post/list")
@@ -43,9 +43,9 @@ class PostController (
     }
 
     @DeleteMapping("/api/post/{id}")
-    fun deletedPost(@PathVariable id:Long): BaseResponse<String>{
-        val response: String = postService.deletePost(id)
-        return BaseResponse(ResultCode.SUCCESS,null, response)
+    fun deletedPost(@PathVariable id:Long): BaseResponse<Boolean>{
+        val response: Boolean = postService.deletePost(id)
+        return BaseResponse(ResultCode.SUCCESS,response, "게시물 삭제가 완료되었습니다.")
     }
 
     @GetMapping("/api/post/remainDay/{id}")
